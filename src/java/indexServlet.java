@@ -37,6 +37,7 @@ public class indexServlet extends HttpServlet {
         }
         if(session.getAttribute("total")==null){
             session.setAttribute("total", (double)0);
+            session.setAttribute("quant", 0);
         } 
         response.setContentType("text/html");
         try{

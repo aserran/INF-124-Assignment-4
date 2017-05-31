@@ -65,6 +65,7 @@ public class cart extends HttpServlet {
         Float.parseFloat(price.substring(1));
         session.setAttribute("total", total);
         session.setAttribute("orders",ordertemp);
+        session.setAttribute("quant", session.getAttribute("quant")+quant);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/cart.jsp");
         rd.forward(request, response);
     }

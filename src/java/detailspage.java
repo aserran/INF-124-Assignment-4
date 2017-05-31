@@ -61,9 +61,11 @@ public class detailspage extends HttpServlet {
                 session.setAttribute("hatqueue",queue);
             }
             else if (queue.size() == 5){
-                queue.remove();
-                queue.add(t);
-                session.setAttribute("hatqueue", queue);
+                if(!queue.contains(t)){
+                    queue.remove();
+                    queue.add(t);
+                    session.setAttribute("hatqueue", queue);
+                }
             }else{
                 if(!queue.contains(t)){
                    queue.add(t); 
@@ -96,7 +98,7 @@ public class detailspage extends HttpServlet {
         
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/details.jsp");
             rd.forward(request, response);
-                con.close();  
+            con.close();  
         } catch (Exception e2) {
             System.out.println(e2);
         }
