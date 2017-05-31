@@ -32,31 +32,28 @@
 				</div>
                                 <div class="featcombo">
                                     <div class="combocontent">
-                                            Cart/Checkout
+                                            Cart
                                     </div>
                                     <div class="cart">
                                         <center><table class="carttable" style="margin-top:3%" frame="box">
                                             <c:forEach var="element" items="${sessionScope.orders}">
                                                 <c:set var="orderdet" value="${fn:split(element, '_')}" />
                                                 <tr><td>${orderdet[0]}</td><td>${orderdet[1]} X ${orderdet[2]}</td>
-                                                    <td><input type="button" value="Remove"</td>
                                                 </tr>
                                             </c:forEach>
                                         </table></center>
                                     </div>
                                     <div class="subtot" style="margin-top:2%;color:#000;font-size: 16px">
-                                        Subtotal: $${sessionScope.total}
+                                        Total: $${sessionScope.total}
                                     </div>
                                     <br/>
                                     <hr/>
                                     
                                     <div class="checkout">
+                                        <center><label style='font-size: 18px;font-weight:bold;color:#000;font-size: 20px;'>Checkout Form:</label></center>
                                         <center><form name="additem" class="orderdetails" id='checkout' action="validate.php" method="post">
                                             <table cellspacing="10px">
-                                                    <tr>
-                                                            <th><label style='font-size: 18px;'>Checkout Form:</label></th>
-                                                            <td>&nbsp;</td>
-                                                    </tr>
+                                  
                                                     <tr>
                                                             <td><label for="fname">First Name: </label></td>
                                                             <td><input id ='fname' style='width:170px;' name='fname' type='text' required></td>

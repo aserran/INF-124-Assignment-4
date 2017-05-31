@@ -77,7 +77,7 @@
                                         <td><input hidden="true" name="model" value="${title}"/>
                                             <td><input hidden="true" name="price" value="${price}"/>
 					<td><input id='quantity' style='width:35px;' name='quant' type='number' min='1' maxlength='2' value='1' required></td>
-                                        <td><input type='submit' id='submit' name='submit' value='Place Order'></td>
+                                        <td><input type='submit' id='submit' name='submit' value='Add to Cart'></td>
                                     </tr>
                                 </table>
                             </form>
