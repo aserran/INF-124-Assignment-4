@@ -81,7 +81,7 @@ and open the template in the editor.
                                         <fmt:parseNumber var="in" type="number" value="${inc}"/>
                                         <tr class = "row">
                                             <td>
-                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[0]}"/>')" href ="details.jsp">
+                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[0]}"/>')" href ="detailspage?param=${image[1]}">
                                                     <div class ="col-1">
                                                         <img src="<c:out value ="${image[0]}"/>" width = "160" height="120">
                                                             <p><c:out value="${image[2]}"/>"<span><br><c:out value="${image[3]}"/>"</span></p>
@@ -90,7 +90,7 @@ and open the template in the editor.
                                             </td>
                                         
                                             <td>
-                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[4]}"/>')" href ="details.jsp">
+                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[4]}"/>')" href ="detailspage?param=${image[5]}">
                                                     <div class ="col-2">
                                                         <img src="<c:out value ="${image[4]}"/>" width ="160" height="120">
                                                         <p><c:out value="${image[6]}"/>"<span><br><c:out value="${image[7]}"/>"</span></p>
@@ -99,7 +99,7 @@ and open the template in the editor.
                                             </td>
                                         
                                             <td>
-                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[8]}"/>')" href ="details.jsp">
+                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[8]}"/>')" href ="detailspage?param=${image[9]}">
                                                     <div class ="col-3">
                                                         <img src="<c:out value ="${image[8]}"/>" width ="160" height="120">
                                                         <p><c:out value="${image[10]}"/>"<span><br><c:out value="${image[11]}"/>"</span></p>
@@ -108,7 +108,7 @@ and open the template in the editor.
                                             </td>
                                         
                                             <td>
-                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[12]}"/>')" href ="details.jsp">
+                                                <a class ="cell" onclick="itemclicked('<c:out value="${image[12]}"/>')" href ="detailspage?param=${image[13]}">
                                                     <div class ="col-4">
                                                         <img src="<c:out value ="${image[12]}"/>" width ="160" height="120">
                                                         <p><c:out value="${image[14]}"/>"<span><br><c:out value="${image[15]}"/>"</span></p>
