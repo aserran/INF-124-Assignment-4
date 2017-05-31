@@ -43,13 +43,15 @@ public class detailspage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String temp = "47LAsnap";
+        String t = request.getParameter("param");
+        int len = t.length() -1;
+        String temp = t.substring(0, len);
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3307/coolfitteddb?zeroDateTimeBehavior=convertToNull", "root", "inf124");
+                    "jdbc:mysql://localhost/coolfitteddb", "root", "");
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from details where imagename='"+temp+"1"+"'");  
             rs.next();
