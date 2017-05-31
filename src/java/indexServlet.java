@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,14 +21,21 @@ import javax.servlet.RequestDispatcher;
  */
 public class indexServlet extends HttpServlet {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/coolfitteddb";
+    static final String DB_URL = "jdbc:mysql://localhost:3307/coolfitteddb?zeroDateTimeBehavior=convertToNull";
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "inf124";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
+        HttpSession session = request.getSession(true);
+        if(session.getAttribute("orders")==null){
+            session.setAttribute("orders", new ArrayList<String>());
+        }
+        if(session.getAttribute("total")==null){
+            session.setAttribute("total", (double)0);
+        } 
         response.setContentType("text/html");
         try{
             Class.forName("com.mysql.jdbc.Driver");

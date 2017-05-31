@@ -20,9 +20,9 @@ import javax.servlet.RequestDispatcher;
  */
 public class snapServlet extends HttpServlet {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/coolfitteddb";
+    static final String DB_URL = "jdbc:mysql://localhost:3307/coolfitteddb";
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "inf124";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

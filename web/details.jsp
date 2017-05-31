@@ -33,7 +33,7 @@
 			</div>
 			<div class='itemtitle'>
 				<div id='title' class='titlecontent'>
-                                        ${title}
+                                        ${title} - ${price}
 				</div>
 			</div>
 			<br/>
@@ -65,7 +65,6 @@
                                             <li>${element}</li>
                                         </c:forEach>
                                         </ul>
-                                        
 				</div>
 			</div>
 			<br/>
@@ -76,6 +75,7 @@
                                     <tr>
                                         <td><label for="quantity">Quantity: </label></td>
                                         <td><input hidden="true" name="model" value="${title}"/>
+                                            <td><input hidden="true" name="price" value="${price}"/>
 					<td><input id='quantity' style='width:35px;' name='quant' type='number' min='1' maxlength='2' value='1' required></td>
                                         <td><input type='submit' id='submit' name='submit' value='Place Order'></td>
                                     </tr>

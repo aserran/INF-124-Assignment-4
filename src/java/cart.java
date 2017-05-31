@@ -41,9 +41,14 @@ public class cart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ArrayList<String> ordertemp = new ArrayList<String>((ArrayList<String>) session.getAttribute("orders"));
+        ArrayList<String> ordertemp = new ArrayList<String>((Collection<? extends String>) session.getAttribute("orders"));
         String model = request.getParameter("model");
-        ordertemp.add(model);
+        String quant = request.getParameter("quant");
+        String price = request.getParameter("price");
+        ordertemp.add(model+"_"+quant+"_"+price);
+        double total = (Double.parseDouble(price.substring(1))*Integer.parseInt(quant))+(double)session.getAttribute("total");
+        Float.parseFloat(price.substring(1));
+        session.setAttribute("total", total);
         session.setAttribute("orders",ordertemp);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/cart.jsp");
         rd.forward(request, response);

@@ -68,7 +68,10 @@ span a{
 	padding:0.4%;
 	font-size: 15px;
 }
-
+.carttable td {
+    padding-left:10px;
+    padding-right:10px;
+}
 .slides {
 	display: none;
 }
