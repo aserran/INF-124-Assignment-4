@@ -203,7 +203,8 @@
 							<td width='100px' style='font-size: 10px;'>By clicking 'Place Order' you acknowledge that you are aware of the total price and the item(s) desired to purchase and that you are ready to make this purchase</td>
 						</tr>
 					</table>
-				</form>--->
+				</form>
+    --->
 			</div>
 			<center>
 			<div class='footercombo' style="margin-top:100px;">
