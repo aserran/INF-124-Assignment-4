@@ -119,6 +119,31 @@ and open the template in the editor.
                                         
                                     </c:forEach>
 				</table>
+                                <div class='featcombo'>
+					<div class='combocontent'>
+						Recently Viewed Items
+					</div>
+				</div>
+                                <table class = 'gridedhats'>
+                                    <c:if test="${empty hatqueue}">
+                                        <p>
+                                            You have not recently viewed any items!
+                                        </p>
+                                    </c:if>
+                                    <c:if test="${not empty hatqueue}">
+                                        <tr class ='row'>
+                                        <c:forEach var="im" items="${hatqueue}">
+                                            <td>
+                                                <a class ="cell" onclick="itemclicked('<c:out value="${im}"/>')" href ="detailspage?param=${im}">
+                                                    <div class ="col-1">
+                                                        <img src="Media/<c:out value="${im}"/>.jpg" width ="160" height="120">
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </c:forEach>
+                                        </tr>
+                                    </c:if>
+                                </table>
 					<div class='footercombo'>
 						<div class='combocontent' style="padding-top:1%; font-size: 20px">
 							CoolFitted<span style='font-size: 13px'>&reg;</span> 2017 &#8209; All Rights Reserved

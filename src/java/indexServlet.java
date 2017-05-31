@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -95,6 +97,9 @@ public class indexServlet extends HttpServlet {
                 counter++;
             }
             results.add(row2);
+	    Queue q;
+            q = (LinkedList)session.getAttribute("hatqueue");
+            request.setAttribute("hatqueue", q);
             request.setAttribute("imagelist", results);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }catch(SQLException se){
