@@ -41,12 +41,26 @@ public class cart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ArrayList<String> ordertemp = new ArrayList<String>((Collection<? extends String>) session.getAttribute("orders"));
+        //ArrayList<String> ordertemp = new ArrayList<String>((Collection<? extends String>) session.getAttribute("orders"));
+        ArrayList<String> ordertemp = (ArrayList)session.getAttribute("orders");
+        if(ordertemp == null){
+            ordertemp = new ArrayList();
+        }
         String model = request.getParameter("model");
         String quant = request.getParameter("quant");
         String price = request.getParameter("price");
         ordertemp.add(model+"_"+quant+"_"+price);
-        double total = (Double.parseDouble(price.substring(1))*Integer.parseInt(quant))+(double)session.getAttribute("total");
+        price = price.substring(1);
+        double tot;
+        Object nulltemp = session.getAttribute("total");
+        if(nulltemp==null){
+            tot = 0.0;
+        }else{
+            tot = (double)session.getAttribute("total");
+        }
+        int q = Integer.parseInt(quant);
+        //double total = (Double.parseDouble(price.substring(1))*Integer.parseInt(quant))+(double)session.getAttribute("total");
+        double total = (Double.parseDouble(price))*q+tot;
         Float.parseFloat(price.substring(1));
         session.setAttribute("total", total);
         session.setAttribute("orders",ordertemp);
