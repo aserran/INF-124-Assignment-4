@@ -28,9 +28,9 @@ import javax.servlet.http.HttpSession;
  */
 public class Confirmation extends HttpServlet {
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3307/coolfitteddb?zeroDateTimeBehavior=convertToNull";
-    static final String USER = "root";
-    static final String PASS = "inf124";
+    static final String DB_URL = "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu/inf124-db-002";
+    static final String USER = "inf124-db-002";
+    static final String PASS = "K5GLfG5ho!!t";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -58,7 +58,6 @@ public class Confirmation extends HttpServlet {
             HttpSession session = request.getSession(true);
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement pstatement = null;
             Statement stmt = conn.createStatement();
             String fname = request.getParameter("fname");
             String lname = request.getParameter("lname");
@@ -74,19 +73,17 @@ public class Confirmation extends HttpServlet {
             String date = request.getParameter("expMonth")+request.getParameter("expYear");
             String total = request.getParameter("total");
             String quant = request.getParameter("quant");
-            String userinfoquery = "INSERT INTO orders (firstname,lastname,phonenumber,email,shippingaddress,city,state,zipcode,shippingmethod,creditname,cardnumber,cvv,expirationdate,totalprice,quantity) VALUES ('"+fname+"','"+lname+"','"+phone+"','"+email+"','"+street+"','"+city+"','"+state+"','"+zip+"', 'No shipping','"+cardname+"','"+cardnum+"','"+cvv+"','"+date+"','"+total+"','"+quant+"')";
+            String userinfoquery = "INSERT INTO orders (firstname,lastname,phonenumber,email,shippingaddress,city,state,zipcode,shippingmethod,creditname,cardnumber,cvv,expirationdate,totalprice,quantity) VALUES ('"+fname+"','"+lname+"','"+phone+"','"+email+"','"+street+"','"+city+"','"+state+"','"+zip+"', 'No shipping','"+cardname+"','"+cardnum+"','"+cvv+"','"+date+"','"+total+"',1)";
             stmt.execute(userinfoquery);   
             String selectlastorderIDquery = "SELECT idorders FROM orders order by idorders DESC LIMIT 1";
             ResultSet rs = stmt.executeQuery(selectlastorderIDquery);
             rs.next();
             String ide = rs.getString("idorders");
+            PreparedStatement pstatement = null;
             for (String order : (ArrayList<String>)session.getAttribute("orders")){
                 String[] brokendown = order.split("_");
-                String orderitemsquery = "INSERT INTO order_item(orderid, itemname) VALUES (?, ?)";
-                pstatement = conn.prepareStatement(orderitemsquery);
-                pstatement.setString(1, ide);
-		pstatement.setString(2, brokendown[0]);
-                int updatequery = pstatement.executeUpdate(orderitemsquery);
+                String orderitemsquery = "INSERT INTO order_item(orderid,itemname) VALUES ('"+ide+"', '"+brokendown[0]+"')";
+                boolean updatequery = stmt.execute(orderitemsquery);
             }
             session.setAttribute("orders", new ArrayList<String>());
             session.setAttribute("total", (double)0);
