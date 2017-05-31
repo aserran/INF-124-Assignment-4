@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="style.css">
 <script type="text/javascript" src="script.js?v=5"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>
+    function itemAdded(){
+        alert("Item has been added to cart.")
+    }
+</script>
 <head>
 	<title>CoolFitted hats</title>
 </head>
@@ -70,7 +75,7 @@
 			<br/>
 			</center>
 			<div class="additembox">
-                            <form name="additem" class="orderdetails" action="cart" method="POST">
+                            <form name="additem" class="orderdetails" action="cart" method="POST" onclick="itemAdded()">
                                 <table>
                                     <tr>
                                         <td><label for="quantity">Quantity: </label></td>
